@@ -89,14 +89,12 @@ export default function App() {
   //     .catch((err) => dispatch({ type: "dataFailed" }));
   // }, []);
   useEffect(() => {
-    fetch("./questions.json")
+    fetch("/questions.json") // This will look for the file in the public folder
       .then((res) => res.json())
-      .then((data) =>
-        dispatch({ type: "dataReceived", payload: data.questions })
-      ) // Access the questions array
+      .then((data) => dispatch({ type: "dataReceived", payload: data.questions }))
       .catch((err) => dispatch({ type: "dataFailed" }));
   }, []);
-
+  
   return (
     <div className="app">
       <Header />
