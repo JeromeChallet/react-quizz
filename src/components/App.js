@@ -91,7 +91,9 @@ export default function App() {
   useEffect(() => {
     fetch("./questions.json")
       .then((res) => res.json())
-      .then((data) => dispatch({ type: "dataReceived", payload: data }))
+      .then((data) =>
+        dispatch({ type: "dataReceived", payload: data.questions })
+      ) // Access the questions array
       .catch((err) => dispatch({ type: "dataFailed" }));
   }, []);
 
