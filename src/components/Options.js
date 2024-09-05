@@ -1,6 +1,8 @@
-import React from "react";
+import { useQuiz } from "../contexts/QuizContext";
 
-export default function Options({ question, dispatch, answer }) {
+function Options({ question }) {
+  const { dispatch, answer } = useQuiz();
+
   const hasAnswered = answer !== null;
 
   return (
@@ -15,7 +17,7 @@ export default function Options({ question, dispatch, answer }) {
               : ""
           }`}
           key={option}
-          disabled={answer !== null}
+          disabled={hasAnswered}
           onClick={() => dispatch({ type: "newAnswer", payload: index })}
         >
           {option}
@@ -24,3 +26,5 @@ export default function Options({ question, dispatch, answer }) {
     </div>
   );
 }
+
+export default Options;
